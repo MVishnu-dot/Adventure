@@ -1,9 +1,19 @@
-import StartingPage from "./pages/StartingPage";
+import { Routes, Route } from "react-router-dom";
 
-export default function App(){
+import StartingPage from "./pages/StartingPage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import MainPage from "./pages/MainPage";
+import About from "./pages/About";
+
+export default function App() {
   return (
-    <div>
-      <StartingPage/>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<StartingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/main" element={<MainPage />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
 }

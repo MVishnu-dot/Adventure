@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // 🔐 later: API call to FastAPI
+    // if success:
+    navigate("/main"); // MainPage route
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 px-6">
       <div className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-8">
@@ -17,7 +27,7 @@ export default function Login() {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm text-gray-300 mb-1">
               Email Address

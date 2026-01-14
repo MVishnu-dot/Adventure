@@ -1,32 +1,16 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Routes, Route, Link } from "react-router-dom";
-
-import Login from "./Login";
-import Signup from "./Signup";
-import About from "./About";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/logo.png";
 import heroVideo from "../assets/hero.mp4";
 
 export default function StartingPage() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/about" element={<About/>}/>
-    </Routes>
-  );
-}
-
-function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-
       {/* VIDEO BACKGROUND */}
       <video
         autoPlay
@@ -38,12 +22,11 @@ function Home() {
         <source src={heroVideo} type="video/mp4" />
       </video>
 
-      {/* DARK OVERLAY */}
+      {/* OVERLAY */}
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* CONTENT */}
       <div className="relative z-10 min-h-screen flex flex-col">
-
         {/* HEADER */}
         <header className="flex items-center justify-between p-6 lg:px-10">
           <img src={logo} className="h-9" alt="Logo" />
@@ -57,6 +40,9 @@ function Home() {
           <div className="hidden lg:flex items-center gap-6">
             <Link to="/about" className="text-gray-300 hover:text-white">
               About
+            </Link>
+            <Link to="/login" className="text-gray-300 hover:text-white">
+              Login
             </Link>
           </div>
         </header>
@@ -80,7 +66,7 @@ function Home() {
           </Dialog.Panel>
         </Dialog>
 
-        {/* HERO SECTION */}
+        {/* HERO */}
         <main className="flex-grow flex items-center justify-center px-6 text-center">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white">
@@ -91,13 +77,13 @@ function Home() {
             </h1>
 
             <p className="mt-8 text-lg text-gray-300">
-              Off-road rides, desert safaris, dirt tracks and mountain trails — all in one powerful adventure platform.
+              Off-road rides, desert safaris, dirt tracks and mountain trails — all in one platform.
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
               <Link
                 to="/signup"
-                className="px-8 py-4 rounded-xl border border-white/20 text-white hover:bg-white/10 transition"
+                className="px-8 py-4 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500 transition"
               >
                 Start Your Journey
               </Link>
