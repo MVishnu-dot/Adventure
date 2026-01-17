@@ -1,6 +1,35 @@
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import heroVideo from "../assets/MainPage.mp4"; // <-- your cinematic video
+import { FocusCards } from "@/components/ui/focus-cards";
+
+
+const featuredExperiences = [
+  {
+    title: "Desert Rally – Thar",
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+  },
+  {
+    title: "Mountain Trails – Himalayas",
+    src: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+  },
+  {
+    title: "Dirt Biking – Coorg",
+    src: "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+  },
+  {
+    title: "River Rafting – Rishikesh",
+    src: "https://images.unsplash.com/photo-1544198365-f5d60b6d8190",
+  },
+  {
+    title: "Sand Dunes – Dubai",
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+  },
+  {
+    title: "Jungle Safari – Northeast",
+    src: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084",
+  },
+];
 
 export default function MainPage() {
   return (
@@ -48,42 +77,20 @@ export default function MainPage() {
       </section>
 
       {/* FEATURED ADVENTURES */}
-      <section className="relative z-10 px-6 py-24 bg-gradient-to-b from-black to-slate-950">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-10">
-            Featured Experiences
-          </h2>
+<section className="relative z-10 px-6 py-28 bg-gradient-to-b from-black to-slate-950">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-3xl font-semibold tracking-tight mb-4">
+      Featured Experiences
+    </h2>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              "Desert Rally – Thar",
-              "Mountain Trails – Himalayas",
-              "Dirt Biking – Coorg",
-              "River Rafting – Rishikesh",
-              "Sand Dunes – Dubai",
-              "Jungle Safari – Northeast",
-            ].map((title, i) => (
-              <div
-                key={i}
-                className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg hover:border-white/20 transition"
-              >
-                <div className="p-6">
-                  <h3 className="text-lg font-medium group-hover:text-indigo-400 transition">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-gray-400 mt-2">
-                    Curated premium adventure with expert guides.
-                  </p>
+    <p className="text-gray-400 mb-14 max-w-2xl">
+      Hand-picked adventures designed for thrill-seekers who demand premium
+      experiences.
+    </p>
 
-                  <button className="mt-4 text-sm font-medium text-indigo-400 hover:text-indigo-300">
-                    Explore →
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <FocusCards cards={featuredExperiences} />
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 py-10 text-center text-sm text-gray-500">

@@ -47,7 +47,7 @@ export default function StartingPage() {
           </div>
         </header>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE MENU
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 bg-black/70 z-40" />
           <Dialog.Panel className="fixed inset-y-0 right-0 w-64 bg-gray-900 p-6 z-50">
@@ -64,7 +64,7 @@ export default function StartingPage() {
               </Link>
             </div>
           </Dialog.Panel>
-        </Dialog>
+        </Dialog> */}
 
         {/* HERO */}
         <main className="flex-grow flex items-center justify-center px-6 text-center">
@@ -83,7 +83,7 @@ export default function StartingPage() {
             <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
               <Link
                 to="/signup"
-                className="px-8 py-4 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500 transition"
+                className="px-8 py-4 rounded-xl border border-white/20 text-white hover:bg-white/10 transition"
               >
                 Start Your Journey
               </Link>

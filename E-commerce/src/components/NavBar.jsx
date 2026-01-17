@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Links } from 'react-router-dom'
+import Logo from '../assets/logo.png'
 const navigation = [
   { name: 'HOME', href: '#', current: true },
   { name: 'CALENDAR', href: '#', current: false },
@@ -32,7 +33,7 @@ export default function Example() {
             <div className="flex shrink-0 items-center">
               <img
                 alt="Your Company"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                src={Logo}
                 className="h-8 w-auto"
               />
             </div>
