@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import heroVideo from "../assets/hero.mp4";
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&display=swap');
+</style>
 export default function StartingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,7 +50,7 @@ export default function StartingPage() {
           </div>
         </header>
 
-        {/* MOBILE MENU
+        MOBILE MENU
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 bg-black/70 z-40" />
           <Dialog.Panel className="fixed inset-y-0 right-0 w-64 bg-gray-900 p-6 z-50">
@@ -64,14 +67,14 @@ export default function StartingPage() {
               </Link>
             </div>
           </Dialog.Panel>
-        </Dialog> */}
+        </Dialog>
 
         {/* HERO */}
         <main className="flex-grow flex items-center justify-center px-6 text-center">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white">
               Book Your Next
-              <span className="block bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent">
                 Extreme Adventure
               </span>
             </h1>

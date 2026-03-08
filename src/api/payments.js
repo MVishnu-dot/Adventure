@@ -2,7 +2,10 @@ import api from "./axios";
 
 // Create fake order
 export const createFakeOrder = async (payload) => {
-  const res = await api.post("/payments/create-order", payload);
+  const res = await api.post("/payments/create-order", {
+    booking_id: payload.booking_id,
+    amount: Number(payload.amount),
+  });
   return res.data;
 };
 

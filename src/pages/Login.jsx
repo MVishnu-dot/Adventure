@@ -1,21 +1,39 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { loginUser } from "../api/auth";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    // 🔐 later: API call to FastAPI
-    // if success:
-    navigate("/main"); // MainPage route
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const data = await loginUser(email, password);
+
+      localStorage.setItem("token", data.access_token);
+
+      navigate("/main");
+    } catch (err) {
+      console.log("LOGIN ERROR FULL:", err);
+      console.log("LOGIN ERROR RESPONSE:", err?.response);
+      console.log("LOGIN ERROR DATA:", err?.response?.data);
+
+      alert(err?.response?.data?.detail || "Login failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 px-6">
       <div className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-8">
-        {/* Logo */}
         <div className="text-center mb-8">
           <img src={logo} alt="Store" className="mx-auto h-18 mb-6" />
           <h2 className="text-2xl font-bold text-white">
@@ -26,7 +44,6 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Form */}
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm text-gray-300 mb-1">
@@ -35,6 +52,8 @@ export default function Login() {
             <input
               type="email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="you@example.com"
             />
@@ -47,30 +66,22 @@ export default function Login() {
             <input
               type="password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="••••••••"
             />
           </div>
 
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center text-gray-400">
-              <input type="checkbox" className="mr-2 accent-indigo-500" />
-              Remember me
-            </label>
-            <Link to="/forgot" className="text-indigo-400 hover:underline">
-              Forgot password?
-            </Link>
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2 rounded-lg font-semibold transition"
+            disabled={loading}
+            className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white py-2 rounded-lg font-semibold transition"
           >
-            Sign In
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        {/* Footer */}
         <p className="mt-6 text-center text-gray-400 text-sm">
           Don’t have an account?{" "}
           <Link to="/signup" className="text-indigo-400 hover:underline">

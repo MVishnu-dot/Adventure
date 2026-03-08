@@ -2,6 +2,8 @@ import api from "./axios";
 
 // Create booking
 export const createBooking = async (payload) => {
+  console.log("TOken:" , localStorage.getItem("token"));
+  console.log("Sending booking",payload);
   const res = await api.post("/bookings/", payload);
   return res.data;
 };
@@ -15,5 +17,11 @@ export const getMyBookings = async () => {
 // Cancel booking
 export const cancelBooking = async (bookingId) => {
   const res = await api.delete(`/bookings/${bookingId}`);
+  return res.data;
+};
+
+
+export const getBookingById = async (bookingId) => {
+  const res = await api.get(`/bookings/${bookingId}`);
   return res.data;
 };

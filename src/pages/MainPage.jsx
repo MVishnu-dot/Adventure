@@ -82,12 +82,12 @@ export default function MainPage() {
           )}
 
           {/* GRID */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-4">
             {adventures.map((item) => (
               <Link
                 key={item.id}
                 to={`/adventure/${item.id}`}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-white/20 transition"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-white/20 transition"
               >
                 {/* IMAGE */}
                 <img
@@ -96,7 +96,8 @@ export default function MainPage() {
                     "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
                   }
                   alt={item.title}
-                  className="h-56 w-full object-cover group-hover:scale-105 transition duration-500"
+                  className="h-90 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 "
+
                 />
 
                 {/* OVERLAY */}

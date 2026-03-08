@@ -1,21 +1,38 @@
-import { useParams } from "react-router-dom";
 import api from "./axios";
 
-export async function loginUser(email ,password){
-   const formData = new URLSearchParams();
-   formData.append("username" , email);
-   formData.append("password" , password);
+export const loginUser = async (email, password) => {
+  const formData = new URLSearchParams();
+  formData.append("username", email);
+  formData.append("password", password);
 
-   const res = await api.post("/auth/login" , formData);
-   return res.data;
-}
+  const res = await api.post("/auth/login", formData, {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
 
-export async function registerUser(name  ,email , password ){
-    const res =  await api.post("/auth/register" ,{
-      name ,
-      email,
-      password,
-    });
+  return res.data;
+};
 
-    return res.data ;
-}
+
+// SIGNUP (normal JSON)
+export const signupUser = async (name, email, password) => {
+  const res = await api.post("/auth/register", {
+    name,
+    email,
+    password,
+  });
+
+  return res.data;
+};
+
+// GET CURRENT USER
+export const getMe = async () => {
+  const res = await api.get("/users/me");
+  return res.data;
+};
+
+// LOGOUT
+export const logoutUser = () => {
+  localStorage.removeItem("token");
+};

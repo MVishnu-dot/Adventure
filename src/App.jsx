@@ -11,7 +11,9 @@ import PaymentPage from "./pages/PaymentPage";
 import ConfirmationPage from "./pages/ConformationPage";
 import MyBookingsPage from "./pages/MyBookingsPage";
 import AdminDashboard from "./pages/AdminDashboard";
-
+import ToursPage from "./pages/ToursPage";
+import CalendarPage from "./pages/CalendarPage";
+import ProfilePage from "./pages/ProfilePage";
 
 
 export default function App() {
@@ -24,11 +26,14 @@ export default function App() {
       <Route path="/about" element={<About />} />
       <Route path="/adventure/:id" element={<AdventureDetails />} />
       <Route path="/booking/:id" element={<BookingPage />} />
-      <Route path="/payment/:adventureId" element={<PaymentPage />} />
-      <Route path="/confirmation/:adventureId" element={<ConfirmationPage />} />
-      <Route path="/my-bookings" element={<MyBookingsPage />} />
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/payment/:bookingId" element={<PaymentPage />} />
+<Route path="/confirmation/:bookingId" element={<ConfirmationPage />} />
 
+      <Route path="/my-bookings" element={<MyBookingsPage />} />
+      <Route path="/tours" element={<ToursPage />} />
+      <Route path="/calendar" element={<CalendarPage/>} />
+      <Route path="/me" element={<ProfilePage />} />
+      
 
 
     </Routes>
